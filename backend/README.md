@@ -18,7 +18,7 @@ To install and run the Renault Case Backend application locally, follow these st
 
 1. Clone the repository from GitHub:
    ```
-  git clone https://github.com/caglauzundurukan/renault-case.git
+   git clone https://github.com/caglauzundurukan/renault-case.git
    ```
 
 2. Navigate to the project directory:
