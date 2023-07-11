@@ -69,7 +69,7 @@ router.delete('/:id', (req, res) => {
 
     try {
         Users.destroy({where: { id: req.params.id }}).then((user) => {
-            res.send("User deleted!");
+            res.status(200);
         });
     } catch (e) {
         res.status(500).send(e);
