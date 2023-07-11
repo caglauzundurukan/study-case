@@ -68,8 +68,8 @@ router.delete('/:id', (req, res) => {
     }
 
     try {
-        Users.destroy({where: { id: req.params.id }}).then((user) => {
-            res.status(200);
+        Users.destroy({where: { id: req.params.id }}).then(() => {
+            res.send({"message": "user deleted"});
         });
     } catch (e) {
         res.status(500).send(e);

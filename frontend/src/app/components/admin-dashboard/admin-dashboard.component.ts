@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { User } from '../../model/user';
+import { Router } from '@angular/router';
 import { UserService } from '../../service/user.service';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -20,10 +22,17 @@ export class AdminDashboardComponent {
   isNewUser: boolean = false;
   isUserToUpdate: boolean = false; 
   
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+    private router: Router,
+     private authService: AuthService) { }
 
   ngOnInit(): void {
     this.refreshTable();
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
   }
 
   refreshTable(): void {
@@ -86,10 +95,11 @@ export class AdminDashboardComponent {
 
   deleteUser(user: User): void {
     if (user.id) {
-      this.userService.deleteUser(user.id).subscribe(() => {
-        console.log('Kullanıcı silindi:');
+      this.userService.deleteUser(user.id).subscribe((user) => {
+        console.log("Kullanıcı silindi: ", user);
+
         this.refreshTable();
-      });
+      })
     }
   }
 }
