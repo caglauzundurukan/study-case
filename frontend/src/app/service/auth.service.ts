@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3131';
+  private apiUrl = 'http://localhost:3000';
   private tokenKey = 'authToken';
   private roleKey = 'authRole';
 

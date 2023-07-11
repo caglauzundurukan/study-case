@@ -6,8 +6,7 @@ import { User } from '../model/user';
   providedIn: 'root'
 })
 export class UserService {
-  // TODO: Change this to the actual API URL from environment.ts
-  private apiUrl = 'http://localhost:3131/';
+  private apiUrl = 'http://localhost:3000/';
   private jwtToken: string | null;
 
   constructor(private http: HttpClient) {

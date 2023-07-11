@@ -62,6 +62,7 @@ export class AdminDashboardComponent {
       }).subscribe((user) => {
         console.log('Kullanıcı güncellendi:', user);
         this.refreshTable();
+        this.isUserToUpdate = false;
       });
     }
     this.selectedUser = undefined;
@@ -78,14 +79,15 @@ export class AdminDashboardComponent {
       }).subscribe((user) => {
         console.log('Kullanıcı oluşturuldu:', user);
         this.refreshTable();
+        this.isNewUser = false;
       });
     }
   }
 
   deleteUser(user: User): void {
     if (user.id) {
-      this.userService.deleteUser(user.id).subscribe((user) => {
-        console.log('Kullanıcı silindi:', user);
+      this.userService.deleteUser(user.id).subscribe(() => {
+        console.log('Kullanıcı silindi:');
         this.refreshTable();
       });
     }
