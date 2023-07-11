@@ -11,7 +11,7 @@ const loginHandler = async (req, res) => {
     }
 
     const token = createToken(user.id, user.role);
-    res.send({ token });
+    res.status(200).send({token, role: user.role});
   } catch (e) {
     res.status(400).send(e);
   }
