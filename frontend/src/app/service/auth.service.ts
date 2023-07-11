@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = environment.apiUrl;
   private tokenKey = 'authToken';
   private roleKey = 'authRole';
 
@@ -29,7 +30,7 @@ export class AuthService {
       password: password
     };
 
-    return this.http.post<any>(`${this.apiUrl}/login`, body, {headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}})
+    return this.http.post<any>(`${this.apiUrl}login`, body, {headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}})
       .subscribe(response => {
         const { token, role } = response;
         this.saveToken(token);
